@@ -18,14 +18,13 @@ namespace WebFileManager.GridFS
         }
 
         public MongoGridFSFileInfo File { get; set; }
+
         Stream stream;
+
         public Stream OpenRead()
         {
             if (File != null)
-            {
                 stream = File.OpenRead();
-                stream.Position = StartPosition;
-            }
             return stream;
         }
 
