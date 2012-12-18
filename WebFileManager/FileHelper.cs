@@ -84,6 +84,7 @@ namespace WebFileManager
         /// <returns></returns>
         public static IEnumerable<IFileEntry> GetEntries(IEnumerable<string> filenames, long start, long end, out long totalLength, out long actualLength, out long actualStart, out long actualEnd, out bool outOfRange)
         {
+            outOfRange = false;
             if (filenames != null && filenames.Any())
             {
                 actualStart = start;
@@ -98,10 +99,6 @@ namespace WebFileManager
                     {
                         outOfRange = true;
                         return entries.ToArray();
-                    }
-                    else
-                    {
-                        outOfRange = false;
                     }
                     long slot = 0, slot0 = 0;
                     int skip = 0;
