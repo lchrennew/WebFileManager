@@ -82,7 +82,7 @@ namespace WebFileManager
         /// <param name="actualStart"></param>
         /// <param name="actualEnd"></param>
         /// <returns></returns>
-        public static IEnumerable<IFileEntry> GetEntries(IEnumerable<string> filenames, long start, long end, out long totalLength, out long actualLength, out long actualStart, out long actualEnd)
+        public static IEnumerable<IFileEntry> GetEntries(IEnumerable<string> filenames, long start, long end, out long totalLength, out long actualLength, out long actualStart, out long actualEnd, out bool outOfRange)
         {
             if (filenames != null && filenames.Any())
             {
@@ -94,7 +94,15 @@ namespace WebFileManager
                     if (start >= totalLength - 1) actualStart = 0;
                     if (end < 0) actualEnd = totalLength - 1;
                     actualLength = actualEnd - actualStart + 1;
-                    if (end >= totalLength || start >= totalLength || (end >= 0 && start > end)) return null;
+                    if (end >= totalLength || start >= totalLength || (end >= 0 && start > end))
+                    {
+                        outOfRange = true;
+                        return entries.ToArray();
+                    }
+                    else
+                    {
+                        outOfRange = false;
+                    }
                     long slot = 0, slot0 = 0;
                     int skip = 0;
                     int take = 0;

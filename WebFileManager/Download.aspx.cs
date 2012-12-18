@@ -81,12 +81,17 @@ namespace WebFileManager
                 IEnumerable<IFileEntry> entries;
                 if (Response.StatusCode == 206)
                 {
-                    entries = FileHelper.GetEntries(filenames, start, end, out totalLength, out length, out start, out end);
-                    Response.AddHeader("Content-Range", string.Format(end >= totalLength - 1 ? "bytes {0}-/{2}" : "bytes {0}-{1}/{2}", start, end, totalLength));
-                    if (entries == null)
+                    bool outOfRange;
+                    entries = FileHelper.GetEntries(filenames, start, end, out totalLength, out length, out start, out end, out outOfRange);
+                    if (outOfRange && ifrangeETag != null) Response.StatusCode = 200;
+                    else
                     {
-                        EndResponse(416);
-                        return;
+                        Response.AddHeader("Content-Range", string.Format(end >= totalLength - 1 ? "bytes {0}-/{2}" : "bytes {0}-{1}/{2}", start, end, totalLength));
+                        if (outOfRange)
+                        {
+                            EndResponse(416);
+                            return;
+                        }
                     }
                 }
                 else
