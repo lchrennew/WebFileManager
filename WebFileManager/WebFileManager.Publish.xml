@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="D:\OpenSource\wfm" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="配置文件1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="List.aspx" publishTime="12/11/2012 09:43:43" />
+    <file relUrl="Upload.aspx" publishTime="12/11/2012 09:43:12" />
+    <file relUrl="Web.config" publishTime="12/11/2012 13:38:46" />
+    <file relUrl="Delete.aspx" publishTime="12/11/2012 09:43:26" />
+    <file relUrl="bin/WebFileManager.dll" publishTime="12/11/2012 13:38:16" />
+    <file relUrl="bin/WebFileManager.pdb" publishTime="12/11/2012 13:38:16" />
+    <file relUrl="Download.aspx" publishTime="12/11/2012 09:42:59" />
+    <file relUrl="appSettings.config" publishTime="12/11/2012 13:30:43" />
+  </publishProfile>
+</publishData>

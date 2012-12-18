@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <input type="text" id="f" value="" />
+    <input type="text" id="from" value="" />
+    <input type="text" id="to" value="" />
+    <button>
+        Download String
+    </button>
+
+    <input type="file" name="" value="" />
+    <input type="button" id="test" value="test" />
+    <div id="log">
+    </div>
+    <script type="text/javascript" src="http://static.js.weather.com.cn/uc/js/jquery.js"></script>
+    <script type="text/javascript">
+        $('button').click(function () {
+            //$('#log').load('1.txt',
+            $.ajax({
+                url: $('#f').val(),
+                headers: $('#from').val() && {
+                    'Range': 'bytes=' + $('#from').val() + '-' + $('#to').val()
+                },
+                success: function (data, t, r) {
+                    $('#log').append('<p>' + r.status + ':' + data + '</p>');
+                },
+                method: 'get'
+            });
+        });
+
+        $('#test').click(function () {
+            var fr = new FileReader();
+        });
+    </script>
+</body>
+</html>
