@@ -24,10 +24,7 @@ namespace WebFileManager.DiskFileSystem
         public Stream OpenRead()
         {
             if (File != null)
-            {
                 stream = File.OpenRead();
-                stream.Position = StartPosition;
-            }
             return stream;
         }
 
